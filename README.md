@@ -32,35 +32,48 @@ CREATE STREAM domainsCount (domain VARCHAR KEY, timestamp VARCHAR)
         PARTITIONS = 1);
 
 و سپس به ترتیپ برای شمارش دامنه ها برای متریک های ۱ ثانیه , یک دقیه ,یک ساعت ,یک روز , و  در نهایت یک هفته
-Window retention¶ مربوطه رو ایجاد کردم
+
+
+
+**Window retention¶ مربوطه رو ایجاد کردم
 CREATE TABLE oneSecound AS 
  SELECT domain, COUNT(*) FROM domainsCount
   WINDOW HOPPING (SIZE 1 SECONDS, ADVANCE BY 1 SECONDS)
   GROUP BY domain
   EMIT CHANGES;
 
-CREATE TABLE oneMinouts AS 
+
+**CREATE TABLE oneMinouts AS 
  SELECT domain, COUNT(*) FROM domainsCount
   WINDOW HOPPING (SIZE 60 SECONDS, ADVANCE BY 10 SECONDS)
   GROUP BY domain
   EMIT CHANGES;
 
-CREATE TABLE oneHours AS 
+
+**CREATE TABLE oneHours AS 
  SELECT domain, COUNT(*) FROM domainsCount
   WINDOW HOPPING (SIZE 1 HOUR, ADVANCE BY 60 SECONDS)
   GROUP BY domain
   EMIT CHANGES;
 
-CREATE TABLE oneDay AS 
+
+**CREATE TABLE oneDay AS 
  SELECT domain, COUNT(*) FROM domainsCount
   WINDOW HOPPING (SIZE 24 HOUR, ADVANCE BY 1 HOUR)
   GROUP BY domain
   EMIT CHANGES;
 
 
-CREATE TABLE onwWeek AS 
+**CREATE TABLE onwWeek AS 
  SELECT domain, COUNT(*) FROM domainsCount
   WINDOW HOPPING (SIZE 7 DAY, ADVANCE BY 1 DAY)
   GROUP BY domain
-  EMIT CHANGES;
+  EMIT CHANGES;**
 
+
+همچین وضیعت ksqlDB 
+ما نیر از لینک زیر قابل دسترسی است
+
+
+
+http://167.71.107.99:8088/info
