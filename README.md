@@ -24,12 +24,17 @@ http://167.71.107.99:9000/
 این ماژول وظیفه ایندکسینگ  و شمارش  و استخراج متریک های مورد نیاز از جریان داده ها را بر عهده دارد
 
 برای این منظور ابتدا با کویری زیر جریان داده ای برای دامنه ها ایجاد کردم
-CREATE STREAM domainsCount (domain VARCHAR KEY, timestamp VARCHAR)
+
+
+
+**CREATE STREAM domainsCount (domain VARCHAR KEY, timestamp VARCHAR)
   WITH (KAFKA_TOPIC = 'input',
         VALUE_FORMAT = 'JSON',
         TIMESTAMP = 'timestamp',
         TIMESTAMP_FORMAT = 'yyyy-MM-dd HH:mm:ss',
-        PARTITIONS = 1);
+        PARTITIONS = 1);**
+
+
 
 و سپس به ترتیپ برای شمارش دامنه ها برای متریک های ۱ ثانیه , یک دقیه ,یک ساعت ,یک روز , و  در نهایت یک هفته
 
