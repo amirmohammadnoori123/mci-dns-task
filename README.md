@@ -19,6 +19,7 @@ http://167.71.107.99:9000/
 
 ادرس بالا .. آدرس پنل کاربری کافکا می باشد که در سرور های دیجیتال اوشن بالا اماده است 
 
+همچین با توجه به این که حداکثر متریک مورد نظر یک هفته بود ttl را نیز برابر یم هفته قرار دادیم
 ## KSQKDB
 
 این ماژول وظیفه ایندکسینگ  و شمارش  و استخراج متریک های مورد نیاز از جریان داده ها را بر عهده دارد
@@ -40,8 +41,11 @@ http://167.71.107.99:9000/
 
 
 
-**Window retention¶ مربوطه رو ایجاد کردم
-CREATE TABLE oneSecound AS 
+**Window retention¶** مربوطه رو ایجاد کردم
+
+
+
+**CREATE TABLE oneSecound AS 
  SELECT domain, COUNT(*) FROM domainsCount
   WINDOW HOPPING (SIZE 1 SECONDS, ADVANCE BY 1 SECONDS)
   GROUP BY domain
@@ -82,3 +86,7 @@ CREATE TABLE oneSecound AS
 
 
 http://167.71.107.99:8088/info
+
+
+## kafka broker
+
